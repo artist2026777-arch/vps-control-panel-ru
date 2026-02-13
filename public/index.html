@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPS Панель Управления</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 VPS Панель Управления</h1>
+            <div class="status-badge" id="statusBadge">ОНЛАЙН</div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Загрузка CPU</h3>
+                <div class="metric" id="cpuMetric">0%</div>
+                <div class="progress-bar"><div class="fill" id="cpuFill"></div></div>
+            </div>
+            <div class="card">
+                <h3>Использование RAM</h3>
+                <div class="metric" id="ramMetric">0%</div>
+                <div class="progress-bar"><div class="fill" id="ramFill"></div></div>
+            </div>
+            <div class="card">
+                <h3>Аптайм</h3>
+                <div class="metric" id="uptimeMetric">0ч 0м 0с</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="sendCommand('start')" class="btn btn-start">Запустить</button>
+            <button onclick="sendCommand('reboot')" class="btn btn-reboot">Перезагрузить</button>
+            <button onclick="sendCommand('stop')" class="btn btn-stop">Остановить</button>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-header">System Console /var/log/syslog</div>
+            <div class="terminal-body" id="terminalBody">
+                <div>[SYSTEM] Подключение к веб-сокету установлено...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
